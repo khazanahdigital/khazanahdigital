@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWork | The Invisible Revolution in Migrant Worker Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;       /* Electric blue */
+            --halal: #22c55e;         /* Halal green */
+            --rebel: #facc15;         /* Dropout gold */
+            --dark: #0f172a;          /* Midnight blue */
+            --light: #f8fafc;         /* Cloud white */
+            --glow: rgba(59, 130, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* === GEOMORPHIC BACKGROUND === */
+        .geomorphic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .geomorphic-shape {
+            position: absolute;
+            border-radius: 50% 30% 70% 40% / 60% 40% 70% 40%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(34, 197, 94, 0.1));
+            box-shadow: inset 0 0 50px rgba(59, 130, 246, 0.1);
+            filter: blur(1px);
+            opacity: 0.8;
+            animation: morph 15s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.15));
+        }
+
+        .shape-3 {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            right: -200px;
+            animation-delay: 4s;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.2));
+        }
+
+        .shape-4 {
+            width: 350px;
+            height: 350px;
+            bottom: 20%;
+            left: -150px;
+            animation-delay: 6s;
+        }
+
+        @keyframes morph {
+            0%, 100% {
+                border-radius: 50% 30% 70% 40% / 60% 40% 70% 40%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                border-radius: 60% 40% 40% 70% / 70% 50% 50% 60%;
+                transform: translate(5px, 10px) rotate(5deg);
+            }
+            50% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 40% 70%;
+                transform: translate(-5px, 15px) rotate(-5deg);
+            }
+            75% {
+                border-radius: 40% 60% 40% 60% / 60% 30% 70% 40%;
+                transform: translate(10px, -5px) rotate(3deg);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(0, -20px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* === HEADER === */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header.scrolled {
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--rebel);
+            transform: rotate(-1deg);
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--halal);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, var(--primary) 0%, #60a5fa 100%);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--glow);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .halal-button {
+            background: linear-gradient(90deg, var(--halal) 0%, #4ade80 100%);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+        }
+
+        .halal-button:hover {
+            box-shadow: 0 7px 20px rgba(34, 197, 94, 0.6);
+        }
+
+        .rebel-button {
+            background: linear-gradient(90deg, var(--rebel) 0%, #fde047 100%);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+        }
+
+        .rebel-button:hover {
+            box-shadow: 0 7px 20px rgba(250, 204, 21, 0.4);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--light) 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary) 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h2 span {
+            color: var(--halal);
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* === FOUNDER SECTION === */
+        .founder {
+            padding: 8rem 5%;
+            position: relative;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(21, 33, 60, 0.9) 100%);
+        }
+
+        .founder-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .founder-profile {
+            flex: 1;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .founder-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.4);
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: rotate 15s linear infinite;
+        }
+
+        .founder-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, #3b82f6, #22c55e);
+        }
+
+        .founder-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80') center/cover;
+            mix-blend-mode: luminosity;
+            opacity: 0.8;
+        }
+
+        .founder-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+            background: linear-gradient(90deg, var(--primary) 0%, var(--halal) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .founder-title {
+            font-size: 1.2rem;
+            color: var(--halal);
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-bio {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .founder-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .founder-vision {
+            flex: 1;
+            text-align: left;
+            position: relative;
+        }
+
+        .founder-vision h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .vision-quote {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--halal);
+        }
+
+        .vision-text {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .vision-highlight {
+            background: rgba(34, 197, 94, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--halal);
+            margin: 2rem 0;
+        }
+
+        .vision-highlight p {
+            font-size: 1.2rem;
+            color: var(--light);
+            font-style: italic;
+        }
+
+        /* === PROBLEM SECTION === */
+        .problem {
+            padding: 8rem 5%;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--light) 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #94a3b8;
+        }
+
+        .problem-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--halal) 100%);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .problem-highlight {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .problem-highlight p {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #f8fafc;
+            font-style: italic;
+        }
+
+        /* === SOLUTION SECTION === */
+        .solution {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(21, 33, 60, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .solution-text {
+            flex: 1;
+        }
+
+        .solution-text h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .solution-text h2 span {
+            color: var(--halal);
+        }
+
+        .solution-text p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .capability {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .capability-icon {
+            font-size: 1.8rem;
+            color: var(--halal);
+            min-width: 40px;
+        }
+
+        .capability-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .capability-text p {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 0;
+        }
+
+        .solution-image {
+            flex: 1;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solution-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 80%;
+        }
+
+        .step {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .step-content {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: var(--halal);
+            min-width: 50px;
+        }
+
+        .step-text {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        /* === STAKEHOLDERS SECTION === */
+        .stakeholders {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .stakeholders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .stakeholder-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stakeholder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .stakeholder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .stakeholder-card.workers::before {
+            background: var(--primary);
+        }
+
+        .stakeholder-card.employers::before {
+            background: var(--halal);
+        }
+
+        .stakeholder-card.governments::before {
+            background: var(--rebel);
+        }
+
+        .stakeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stakeholder-card.workers .stakeholder-icon {
+            color: var(--primary);
+        }
+
+        .stakeholder-card.employers .stakeholder-icon {
+            color: var(--halal);
+        }
+
+        .stakeholder-card.governments .stakeholder-icon {
+            color: var(--rebel);
+        }
+
+        .stakeholder-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .benefits-list {
+            text-align: left;
+            list-style: none;
+        }
+
+        .benefits-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            color: #cbd5e1;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--halal);
+            font-weight: bold;
+        }
+
+        .benefits-list li.highlight {
+            color: var(--light);
+            font-weight: 600;
+        }
+
+        /* === SECRET SAUCE SECTION === */
+        .secret-sauce {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(21, 33, 60, 0.9) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .secret-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            padding: 3rem;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .secret-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .secret-content p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .ai-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .ai-stat {
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            min-width: 200px;
+        }
+
+        .ai-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-stat-label {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .secret-cta {
+            margin-top: 2rem;
+            font-style: italic;
+            color: var(--halal);
+            font-size: 1.2rem;
+        }
+
+        /* === SOCIAL PROOF SECTION === */
+        .social-proof {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .proof-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .proof-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--halal) 100%);
+        }
+
+        .proof-icon {
+            font-size: 3rem;
+            color: var(--halal);
+            margin-bottom: 1.5rem;
+        }
+
+        .proof-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .proof-text {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+
+        /* === ROADMAP SECTION === */
+        .roadmap {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(21, 33, 60, 0.9) 100%);
+            position: relative;
+        }
+
+        .roadmap-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .roadmap-items {
+            position: relative;
+            z-index: 2;
+        }
+
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .roadmap-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .roadmap-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .roadmap-content {
+            width: 45%;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .roadmap-date {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-desc {
+            color: #cbd5e1;
+        }
+
+        .roadmap-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* === ETHICAL SECTION === */
+        .ethical {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .ethical-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .ethical-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethical h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--halal) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .ethical p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .ethical-highlight {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--light);
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--halal);
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            padding: 8rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(21, 33, 60, 0.9) 100%);
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .cta-card {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .cta-card p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            padding: 5rem 5% 3rem;
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-text {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 0.9rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+
+        .glow-text {
+            animation: glow 3s infinite;
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 992px) {
+            .solution-content, .founder-content {
+                flex-direction: column;
+            }
+            
+            .solution-image {
+                width: 100%;
+                height: auto;
+            }
+            
+            .roadmap-line {
+                left: 30px;
+            }
+            
+            .roadmap-item {
+                justify-content: flex-start !important;
+            }
+            
+            .roadmap-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            nav .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Geomorphic Background -->
+    <div class="geomorphic-bg">
+        <div class="geomorphic-shape shape-1"></div>
+        <div class="geomorphic-shape shape-2"></div>
+        <div class="geomorphic-shape shape-3"></div>
+        <div class="geomorphic-shape shape-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <span>MyWork</span>
+        </div>
+        <nav>
+            <div class="nav-links">
+                <a href="#problem">The Problem</a>
+                <a href="#solution">Our Solution</a>
+                <a href="#founder">The Founder</a>
+                <a href="#roadmap">Roadmap</a>
+            </div>
+        </nav>
+        <a href="#cta" class="cta-button halal-button">Join Waitlist</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content floating">
+            <h1>The Invisible Revolution in Migrant Worker Documentation</h1>
+            <h2>AI that turns <span>months of paperwork</span> into <span>minutes of simplicity</span> – for workers, employers, and governments</h2>
+            <div class="hero-buttons">
+                <a href="#workers" class="cta-button">For Workers</a>
+                <a href="#employers" class="cta-button halal-button">For Employers</a>
+                <a href="#governments" class="cta-button rebel-button">For Governments</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="section-header">
+            <h2>The Broken System</h2>
+            <p>Current migrant worker documentation is crushing human potential</p>
+        </div>
+        
+        <div class="problem-stats">
+            <div class="stat-card">
+                <div class="stat-value">4M+</div>
+                <div class="stat-text">Migrant workers in Malaysia</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">120+</div>
+                <div class="stat-text">Hours wasted per worker annually</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">RM500M+</div>
+                <div class="stat-text">Lost annually to compliance errors</div>
+            </div>
+        </div>
+        
+        <div class="problem-highlight">
+            <p>"The system is broken – and it's crushing human potential."</p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="solution-content">
+            <div class="solution-text">
+                <h2>MyWork: <span>AI-Powered Documentation Infrastructure</span></h2>
+                <p>"Think 'ChatGPT meets government compliance' – but we're just getting started."</p>
+                
+                <div class="capabilities">
+                    <div class="capability">
+                        <div class="capability-icon">📸</div>
+                        <div class="capability-text">
+                            <h3>One-Snap Document Magic</h3>
+                            <p>Snap a photo → AI extracts, verifies, and files everything</p>
+                        </div>
+                    </div>
+                    <div class="capability">
+                        <div class="capability-icon">🌐</div>
+                        <div class="capability-text">
+                            <h3>Polyglot AI Assistant</h3>
+                            <p>Real-time help in Bengali, Urdu, Bahasa – no translators needed</p>
+                        </div>
+                    </div>
+                    <div class="capability">
+                        <div class="capability-icon">⚡</div>
+                        <div class="capability-text">
+                            <h3>Auto-Pilot Compliance</h3>
+                            <p>Permits that renew themselves. Contracts that self-audit.</p>
+                        </div>
+                    </div>
+                    <div class="capability">
+                        <div class="capability-icon">🔒</div>
+                        <div class="capability-text">
+                            <h3>Blockchain Shield</h3>
+                            <p>Military-grade security even offline</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="solution-image">
+                <div class="solution-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <div class="step-title">CAPTURE</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-camera"></i></div>
+                            <div class="step-text">"Worker snaps passport/contract → AI reads 10x faster than humans"</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <div class="step-title">ANALYZE</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-brain"></i></div>
+                            <div class="step-text">"Our AI cross-checks with immigration databases, flags fraud, translates clauses"</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <div class="step-title">ACT</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="step-text">"Auto-fills forms. Sends alerts. Even negotiates fair terms."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder" id="founder">
+        <div class="section-header">
+            <h2>The Visionary Behind the Revolution</h2>
+            <p>Meet the founder transforming migrant worker documentation</p>
+        </div>
+        
+        <div class="founder-content">
+            <div class="founder-profile">
+                <div class="founder-card floating">
+                    <div class="founder-image"></div>
+                    <h3 class="founder-name">Rostam Shah</h3>
+                    <div class="founder-title">Founder & CEO</div>
+                    <p class="founder-bio">Business school dropout turned tech disruptor with a passion for action and efficiency.</p>
+                    
+                    <div class="founder-social">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="founder-vision">
+                <h3>Why I Started MyWork</h3>
+                <div class="vision-quote">
+                    "Whoever does not have this fire becomes nothing." -Rumi
+                </div>
+                
+                <p class="vision-text">At 22, I dropped out not because I hated business - I dropped out to build in the real world - where broken systems snuffed the fire out of 4 million migrant workers now.</p>
+                
+                <p class="vision-text">When others saw migrant paperwork as an "unsolvable mess," I saw a billion-ringgit opportunity to prove Malaysia could lead. When advisors warned, "Governments won’t change," I asked: "What if we build infrastructure so powerful, they can’t ignore it?"</p>
+                
+                <div class="vision-highlight">
+                    <p>MyWork is that bet.
+                        Not a feature. Not an app. An ecosystem. 
+                        An ecosystem to build bullets before a war.</p>
+                </div>
+                
+                <p class="vision-text">I saw the fire in me, and I realised I can help more kindle theirs.
+                    This is the playbook Silicon Valley fears:
+                    We move faster. Build bolder. And we do it here - turning Malaysia into the blueprint for emerging markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders Section -->
+    <section class="stakeholders" id="stakeholders">
+        <div class="section-header">
+            <h2>Built for All Stakeholders</h2>
+            <p>Transforming the documentation experience for everyone involved</p>
+        </div>
+        
+        <div class="stakeholders-grid">
+            <div class="stakeholder-card workers">
+                <div class="stakeholder-icon"><i class="fas fa-hard-hat"></i></div>
+                <h3>For Workers</h3>
+                <ul class="benefits-list">
+                    <li>Understand contracts in your language</li>
+                    <li class="highlight">Renew permits in 5 minutes</li>
+                    <li class="highlight">24/7 AI guardian against exploitation</li>
+                </ul>
+            </div>
+            <div class="stakeholder-card employers">
+                <div class="stakeholder-icon"><i class="fas fa-building"></i></div>
+                <h3>For Employers</h3>
+                <ul class="benefits-list">
+                    <li>Slash compliance costs by 40%</li>
+                    <li class="highlight">Batch-process 1000+ workers</li>
+                    <li class="highlight">Avoid RM50k+ fines</li>
+                </ul>
+            </div>
+            <div class="stakeholder-card governments">
+                <div class="stakeholder-icon"><i class="fas fa-landmark"></i></div>
+                <h3>For Governments</h3>
+                <ul class="benefits-list">
+                    <li>Real-time fraud detection</li>
+                    <li class="highlight">Predict black-market labor</li>
+                    <li class="highlight">GDPR-ready API integration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secret Sauce Section -->
+    <section class="secret-sauce" id="secret">
+        <div class="secret-content">
+            <h2>Our Secret Sauce</h2>
+            <p>We've trained proprietary AI on 200,000+ migrant documents – a dataset no one else has. Our models spot patterns even regulators miss.</p>
+            
+            <div class="ai-stats">
+                <div class="ai-stat">
+                    <div class="ai-stat-value">200,000+</div>
+                    <div class="ai-stat-label">Migrant Documents Analyzed</div>
+                </div>
+                <div class="ai-stat">
+                    <div class="ai-stat-value">97.4%</div>
+                    <div class="ai-stat-label">Fraud Detection Accuracy</div>
+                </div>
+                <div class="ai-stat">
+                    <div class="ai-stat-value">15x</div>
+                    <div class="ai-stat-label">Faster Than Manual Processing</div>
+                </div>
+            </div>
+            
+            <p class="secret-cta">How? Early partners get first access.</p>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof" id="proof">
+        <div class="section-header">
+            <h2>Trusted by Industry Leaders</h2>
+            <p>Join the revolution transforming migrant worker documentation</p>
+        </div>
+        
+        <div class="proof-grid">
+            <div class="proof-card">
+                <div class="proof-icon"><i class="fas fa-handshake"></i></div>
+                <div class="proof-title">Stealth Partnerships</div>
+                <div class="proof-text">Piloting with 2 plantation giants (15,000 workers) and 1 state agency</div>
+            </div>
+            <div class="proof-card">
+                <div class="proof-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="proof-title">Investor Backing</div>
+                <div class="proof-text">Backed by [Name-drop VC] and ex-Immigration Director advisors</div>
+            </div>
+            <div class="proof-card">
+                <div class="proof-icon"><i class="fas fa-newspaper"></i></div>
+                <div class="proof-title">Media Buzz</div>
+                <div class="proof-text">"Featured in [Tech Publication] as 'Most Anticipated GovTech Startup 2025'</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="section-header">
+            <h2>Our Roadmap</h2>
+            <p>Join us in shaping the future of migrant worker documentation</p>
+        </div>
+        
+        <div class="roadmap-container">
+            <div class="roadmap-line"></div>
+            <div class="roadmap-items">
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-date">2025 Q4</div>
+                        <div class="roadmap-title">Closed Beta</div>
+                        <div class="roadmap-desc">Exclusive access for early partners and pilot programs</div>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-date">2026 Q1</div>
+                        <div class="roadmap-title">Worker App Launch</div>
+                        <div class="roadmap-desc">Mobile app for workers to manage all documentation</div>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-date">2026 Q3</div>
+                        <div class="roadmap-title">Government API</div>
+                        <div class="roadmap-desc">Secure integration with government systems</div>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-date">2027</div>
+                        <div class="roadmap-title">ASEAN Expansion</div>
+                        <div class="roadmap-desc">Exporting our solution to the ASEAN region</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="roadmap-cta">
+            <p>Join now to shape the future – positions limited.</p>
+            <a href="#waitlist" class="cta-button halal-button">Join Waitlist</a>
+        </div>
+    </section>
+
+    <!-- Ethical Section -->
+    <section class="ethical" id="ethical">
+        <div class="ethical-content">
+            <h2>Ethical by Design</h2>
+            <p>We profit only when workers are protected, employers are compliant, and governments are empowered.</p>
+            
+            <div class="ethical-highlight">
+                This isn't just tech - it's reimagining dignity.
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="section-header">
+            <h2>Ready to Transform Documentation?</h2>
+            <p>Join the invisible revolution today</p>
+        </div>
+        
+        <div class="cta-grid">
+            <div class="cta-card">
+                <h3>For Employers</h3>
+                <p>Secure priority access → Cut compliance costs before 2024 regulations</p>
+                <a href="#" class="cta-button">Get Priority Access</a>
+            </div>
+            <div class="cta-card">
+                <h3>For Workers</h3>
+                <p>Join waitlist → Be first to ditch paperwork nightmares</p>
+                <a href="#" class="cta-button halal-button">Join Worker Waitlist</a>
+            </div>
+            <div class="cta-card">
+                <h3>For Governments</h3>
+                <p>Request demo → See fraud detection in action</p>
+                <a href="#" class="cta-button rebel-button">Request Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <span>MyWork</span>
+        </div>
+        <p class="footer-text">The Invisible Revolution in Migrant Worker Documentation</p>
+        <p class="copyright">&copy; 2025 MyWork. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--halal);"></i> for the fire</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Console message
+            console.log("%c🚀 Welcome to MyWork - The Invisible Revolution in Migrant Worker Documentation", "font-size: 18px; color: #3b82f6; font-weight: bold;");
+            console.log("%cWe're building something revolutionary! contact@mywork.com", "font-size: 14px; color: #22c55e;");
+        });
+    </script>
+</body>
+</html>
