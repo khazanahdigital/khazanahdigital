@@ -181,10 +181,6 @@
     }
     
     .text-gradient {
-      background: linear-gradient(90deg, #4b5563, #111827);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
       position: relative;
       z-index: 1;
     }
@@ -265,6 +261,10 @@
       position: relative;
       color: #111827;
       font-weight: 600;
+    }
+    
+    .dark .nav-active {
+      color: #f3f4f6;
     }
     
     .nav-active::after {
@@ -351,12 +351,12 @@
   <!-- Header -->
   <header class="relative z-10">
     <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-      <div class="flex items-center">
+      <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
         <div class="w-12 h-12 flex items-center justify-center">
           <img src="images/apple-touch-icon.png" alt="Khazanah Digital Logo" class="w-full h-full object-contain">
         </div>
         <h1 class="ml-3 text-2xl font-bold tracking-tight"><span class="text-gradient">Khazanah</span> Digital</h1>
-      </div>
+      </a>
       
       <div class="flex items-center">
         <nav class="hidden md:block">
