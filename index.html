@@ -54,6 +54,10 @@
             transition: background-color 0.3s ease;
         }
         
+        html {
+            overflow-x: hidden;
+        }
+        
         .dark body {
             background-color: #111827;
         }
@@ -109,6 +113,8 @@
             filter: blur(20px);
             animation: smoke-drift 30s infinite linear;
             mix-blend-mode: overlay;
+            max-width: 50vw;
+            max-height: 50vw;
         }
 
         .smoke-1 {
@@ -154,7 +160,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 200%;
+            width: 100%;
             height: 100%;
             background: 
                 linear-gradient(90deg, transparent 49%, rgba(229, 231, 235, 0.1) 50%, transparent 51%),
@@ -162,6 +168,7 @@
             background-size: 80px 80px;
             opacity: 0.4;
             z-index: -1;
+            overflow: hidden;
         }
         
         .dark .animated-grid {
@@ -190,6 +197,8 @@
         .mobile-menu {
             transition: all 0.3s ease;
             transform: translateY(-100%);
+            overflow-x: hidden;
+            max-width: 100vw;
         }
         
         .dark .mobile-menu {
@@ -302,6 +311,32 @@
         .dark .project-img {
             filter: brightness(0.9);
         }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .smoke-1,
+            .smoke-2,
+            .smoke-3 {
+                width: 200px;
+                height: 200px;
+                max-width: 40vw;
+                max-height: 40vw;
+            }
+            
+            .animated-grid {
+                background-size: 40px 40px;
+            }
+            
+            body, html {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+            
+            * {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
     </style>
 </head>
 <body class="relative bg-khazanah-100 text-khazanah-800 dark:bg-khazanah-900 dark:text-khazanah-200">
@@ -355,23 +390,23 @@
     
     <!-- Mobile Menu -->
     <div class="mobile-menu hidden md:hidden fixed inset-0 bg-white dark:bg-khazanah-800 z-50 pt-20 px-4">
-        <div class="container mx-auto">
+        <div class="container mx-auto max-w-full">
             <ul class="space-y-6 py-6">
                 <li><a href="#home" class="block text-2xl font-medium hover:text-khazanah-600 dark:hover:text-khazanah-300 transition" onclick="smoothScroll(event)">Home</a></li>
                 <li><a href="#services" class="block text-2xl font-medium hover:text-khazanah-600 dark:hover:text-khazanah-300 transition" onclick="smoothScroll(event)">Services</a></li>
                 <li><a href="#projects" class="block text-2xl font-medium hover:text-khazanah-600 dark:hover:text-khazanah-300 transition" onclick="smoothScroll(event)">Projects</a></li>
                 <li><a href="#contact" class="block text-2xl font-medium hover:text-khazanah-600 dark:hover:text-khazanah-300 transition" onclick="smoothScroll(event)">Contact</a></li>
                 <!-- Dark Mode Toggle for Mobile -->
-                <li class="flex items-center justify-center mt-8">
-                    <div class="flex items-center">
-                        <span class="mr-3 text-lg dark:text-gray-300">Light</span>
-                        <div class="toggle-container" id="mobileDarkModeToggle">
+                <li class="flex items-center justify-center mt-8 px-4">
+                    <div class="flex items-center justify-center w-full max-w-xs">
+                        <span class="mr-2 text-sm dark:text-gray-300 flex-shrink-0">Light</span>
+                        <div class="toggle-container mx-2" id="mobileDarkModeToggle">
                             <div class="toggle-handle">
                                 <span class="toggle-icon dark:hidden">🌙</span>
                                 <span class="toggle-icon hidden dark:block">☀️</span>
                             </div>
                         </div>
-                        <span class="ml-3 text-lg dark:text-gray-300">Dark</span>
+                        <span class="ml-2 text-sm dark:text-gray-300 flex-shrink-0">Dark</span>
                     </div>
                 </li>
             </ul>
